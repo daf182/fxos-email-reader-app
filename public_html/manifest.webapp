@@ -1,0 +1,22 @@
+{
+  "name": "EmailReader",
+  "description": "Single-page email reader app , with angular js",
+  "launch_path": "/index.html",
+  "icons": {
+    "30": "/images/icon-30.png",
+    "60": "/images/icon-60.png",
+    "128": "/images/icon-128.png"
+  },
+  "developer": {
+    "name": "Gergo Nagy",
+    "url": "http://github.com/daf182"
+  },
+  "default_locale": "en",
+  "type":"privileged",
+  "permissions":{
+     "systemXHR" : {}
+   },
+   "orientation": ["portrait"]
+}
+
+

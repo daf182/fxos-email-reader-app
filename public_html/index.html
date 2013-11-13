@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <title>Angular based Single-page email reader</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <link type="text/css" rel="stylesheet" href="css/webmail.css">
+        <link type="text/css" rel="stylesheet" href="css/brick-1.0beta7.css">
+    </head>
+    <body ng-app="fxosEmailReader" ng-csp>
+        <div id="wrapper">
+            <x-deck id="deck" ng-controller="EmailListCtrl">
+                <x-card>
+                    <!-- Folders -->
+                    <ul class="folders">
+                        <li ng-repeat="folder in folders" 
+                            ng-click="goToFolder(folder)"
+                            ng-class="{selected: folder == selectedFolder}">{{folder}}</li>
+                    </ul>
+                    <!-- Mails grid -->
+                    <table class="mails">
+                        <thead><tr><th>From</th><th>To</th><th>Subject</th><th>Date</th></tr></thead>
+                        <tbody ng-repeat="mail in chosenFolderData.mails">
+                            <tr ng-click="goToEmail(mail)">
+                                <td>{{mail.from}}</td>
+                                <td>{{mail.to}}</td>
+                                <td>{{mail.subject}}</td>
+                                <td>{{mail.date}}</td>
+                            </tr>     
+                        </tbody>
+                    </table>
+                </x-card>
+                <x-card id="backHeader">
+                    <!-- Chosen mail -->
+                    <div class="viewMail">
+                        <div class="mailInfo">
+                            <h1>{{chosenMailData.subject}}</h1>
+                            <p><label>From</label>: <span>{{chosenMailData.from}}</span></p>
+                            <p><label>To</label>: <span>{{chosenMailData.to}}</span></p>
+                            <p><label>Date</label>: <span>{{chosenMailData.date}}</span></p>
+                        </div>
+                        <p class="message" ng-bind-html="chosenMailData.messageContent"></p>
+                    </div>
+                </x-card>
+            </x-deck>
+        </div>
+        <script src="js/libs/brick/brick-1.0beta7.js"></script>
+        <script src="js/libs/angular/angular-1.2.js"></script>
+        <script src="js/libs/angular/angular-resource.min.js"></script>
+        <script src="js/libs/angular/angular-sanitize.min.js"></script>
+        <script src="js/EmailJson.js"></script>
+        <!--<script src="js/EmailStub.js"></script>-->
+        <script src="js/controllers.js"></script>
+    </body>
+</html>
