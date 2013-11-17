@@ -6,10 +6,10 @@
 var emailJsonService = angular.module('emailJsonService', ['ngResource']);
 emailJsonService.factory('EmailJson', ['$resource',
     function($resource) {
-        var foldersClient = $resource('http://learn.knockoutjs.com/mail?folder=:folder', {}, {
+        var foldersClient = $resource('http://email-reader.appspot.com/emailreader?folder=:folder', {}, {
                     query: {method:'GET', params:{folder : 'Inbox'}}
                 });
-        var mailClient = $resource('http://learn.knockoutjs.com/mail?mailId=:mailId', {}, {
+        var mailClient = $resource('http://email-reader.appspot.com/emailreader?mailId=:mailId', {}, {
                     query: {method:'GET', params:{mailId: 0}}
                     });
         
